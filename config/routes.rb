@@ -2,12 +2,13 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   devise_for :users
+
   get 'home/index'
-    mount Sidekiq::Web => '/sidekiq'
 
-    root to:  "home#index"
+  root to:  "home#index"
 
+  mount Sidekiq::Web => '/sidekiq'
 
+  mount SimpleDiscussion::Engine => "/forum"
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
