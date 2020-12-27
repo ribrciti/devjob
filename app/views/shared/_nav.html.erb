@@ -1,0 +1,12 @@
+<div class="ml-4 mb-4">
+      <%= link_to "home", root_path, class: "btn btn-sm btn-primary " %>
+      <%= link_to "Sign In", new_user_session_path,  class: "btn btn-sm btn-outline-primary" %>
+      <%= link_to  "Sign Up", new_user_registration_path , class: "btn btn-sm btn-outline-primary" %>
+      <%=  link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-primary" %>
+
+      <%= link_to "Jobs", jobs_path, class: "btn btn-sm btn-success" %>
+
+</div>
+
+
+
