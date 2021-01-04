@@ -1,3 +1,4 @@
+<div class="container login">
 <div class="card">
   <div class="card-body">
     <div class="row">
@@ -8,14 +9,16 @@
           <%= render "devise/shared/error_messages", resource: resource %>
 
           <div class="form-group">
+            <%= f.label :name %><br />
+            <%= f.text_field :name, class:"form-group" %>
+          </div>
+
+
+
+          <div class="form-group">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
             <em><small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small></em>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :user_name %><br />
-            <%= f.text_field :user_name, class:"form-control" %>
           </div>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -41,6 +44,23 @@
             <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
           </div>
 
+          <div class="form-group">
+            <%= f.label :developer, "Use devjob as a developer?" %><br />
+            <%= f.check_box :developer, class:"form-group" %>
+          </div>
+
+          <h4 class="my-4 text-large font-bold">Roles</h4>
+
+          <div class="form-group">
+            <%= f.check_box :developer, class:"form-group" %>
+            <%= f.label :developer, "Use devjob.com as a developer?" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.check_box :employer, class:"form-group" %>
+            <%= f.label :employer, "Use devjob.com as an employer?" %>
+          </div>
+
           <div class="actions">
             <%= f.submit "Update", class:"btn btn-sm btn-primary" %>
           </div>
@@ -57,4 +77,5 @@
       <%= link_to "Back", root_path  %>
     </div>
   </div>
+</div>
 </div>

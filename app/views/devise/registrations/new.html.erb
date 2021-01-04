@@ -1,9 +1,15 @@
+<div class="container login ">
 <div class="card">
   <div class="card-body">
     <h2>Sign up</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
 
       <div class="form-group">
         <%= f.label :email %><br />
@@ -23,6 +29,18 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
+      <h4 class="my-4 text-large font-bold">Roles</h4>
+
+      <div class="form-group">
+        <%= f.check_box :developer, class:"form-group" %>
+        <%= f.label :developer, "Use devjob.com as a developer?" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.check_box :employer, class:"form-group" %>
+        <%= f.label :employer, "Use devjob.com as an employer?" %>
+      </div>
+
       <div class="form-group">
         <%= f.submit "Sign up", class: "btn btn-sm btn-primary" %>
       </div>
@@ -31,3 +49,5 @@
     <%= render "devise/shared/links" %>
   </div>
 </div>
+</div>
+
