@@ -29,6 +29,8 @@
 #
 class User < ApplicationRecord
 
+
+
   include SimpleDiscussion::ForumUser
   has_person_name
 
@@ -43,4 +45,5 @@ class User < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
 end

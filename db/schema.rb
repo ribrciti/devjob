@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_192148) do
+ActiveRecord::Schema.define(version: 2021_01_04_234314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,14 +98,24 @@ ActiveRecord::Schema.define(version: 2020_12_28_192148) do
     t.string "title"
     t.string "link_to_apply"
     t.string "company_name"
+    t.string "headquarters"
     t.string "company_website"
-    t.string "role_type"
     t.string "compensation_range"
+    t.string "compensation_type"
+    t.string "estimated_hours"
     t.boolean "remote", default: false
     t.string "years_of_experience"
+    t.string "status", default: "pending"
+    t.integer "price"
+    t.string "upsell_type"
+    t.datetime "published_at"
+    t.datetime "featured_until"
+    t.boolean "featured", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_jobs_on_slug", unique: true
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 

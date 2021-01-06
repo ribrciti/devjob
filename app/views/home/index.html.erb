@@ -1,5 +1,6 @@
-<div class="container ml-4">
-<h1>Home#index</h1>
+<h3 class="mb-4"> Welcome to devjob.com a site that provides jobs like this:</h3>
 
+<% @jobs.each do |job| %>
+ <p><%= link_to "#{job.title}", job_path(job)  %></p>
+<% end %>
 
-</div>

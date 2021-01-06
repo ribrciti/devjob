@@ -46,6 +46,7 @@ gem 'sidekiq', '~> 6.0', '>= 6.0.5'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'foreman', '~> 0.86.0'
 
+
 gem 'htmlbeautifier', '~> 1.3', '>= 1.3.1'
 gem 'inline_svg', '~> 1.7', '>= 1.7.2'
 gem 'name_of_person', '~> 1.1', '>= 1.1.1'
