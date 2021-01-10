@@ -11,13 +11,17 @@
   </head>
 
   <body>
+
     <div class="m-4">
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+      <%= render "shared/nav" %>
 
-       <%= render "shared/nav" %>
+      <spanspan class="notice"><%= notice %></span>
+      <span class="alert"><%= alert %></span>
 
-    <%= yield %>
-  </div>
+
+
+      <%= yield %>
+    </div>
+
   </body>
 </html>

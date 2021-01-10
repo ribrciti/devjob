@@ -1,1 +1,58 @@
 @import '~bootstrap/scss/bootstrap';
+
+
+
+.nav-bar {
+  background-color: #d9d9d9;
+  color: white;
+}
+
+.change-my-color {
+  fill: red;
+  padding: 4px;
+}
+
+.fs-2 {
+  font-size: 28px;
+
+}
+
+.nav-bar-extras {
+  color: black;
+}
+
+
+
+%focus-style {
+  @apply shadow outline-none border-gray-500;
+
+  box-shadow: 0 0 0 0.2rem theme("colors.gray.200");
+  background-clip: padding-box;
+}
+
+.input {
+  @apply appearance-none block w-full text-gray-700 border border-gray-400 rounded px-3 leading-tight bg-white shadow-inner;
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+.input:focus,
+.input:hover {
+  @extend %focus-style;
+}
+
+.label {
+  @apply inline-block text-gray-700 text-sm font-bold mb-2;
+  color: blue;
+}
+
+.input-group {
+  @apply mb-6;
+}
+
+
+
+
+
+
+

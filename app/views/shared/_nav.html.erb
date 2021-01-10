@@ -7,12 +7,14 @@
 
   <% if user_signed_in? %>
     <%= link_to "My account", edit_user_registration_path, class: "btn btn-sm btn-outline-dark mr-4" %>
-    <%=  link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-primary" %>
+    <%=  link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-primary mr-4" %>
+    <span class="nav-bar-extras">
+      Welcome <%= current_user.email %>
+    </span>
   <% else %>
     <%= link_to "Login", new_user_session_path, class:"btn btn-sm btn-outline-primary" %>
     <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm btn-outline-primary" %>
   <% end %>
 </div>
-
 
 
