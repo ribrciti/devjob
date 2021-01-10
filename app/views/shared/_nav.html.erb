@@ -1,12 +1,17 @@
-<div class="ml-4 mb-4">
-      <%= link_to "home", root_path, class: "btn btn-sm btn-primary " %>
-      <%= link_to "Sign In", new_user_session_path,  class: "btn btn-sm btn-outline-primary" %>
-      <%= link_to  "Sign Up", new_user_registration_path , class: "btn btn-sm btn-outline-primary" %>
-      <%=  link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-primary" %>
+<div class="flex items-right  mb-4 nav-bar">
 
-      <%= link_to "Jobs", jobs_path, class: "btn btn-sm btn-success" %>
-      <%= link_to "Edit my account", edit_user_registration_path, class: "btn btn-sm btn-outline-primary" %>
+  <%= link_to root_path, class:"change-my-color" do %>
+    <%= render_svg "icons/railsdevs-mark", title: "railsdevs.com", styles: "" %>
+    <span class="ml-2 mr-4 font-weight-bold fs-2 text-danger">RailsDevs</span>
+  <% end %>
 
+  <% if user_signed_in? %>
+    <%= link_to "My account", edit_user_registration_path, class: "btn btn-sm btn-outline-dark mr-4" %>
+    <%=  link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-primary" %>
+  <% else %>
+    <%= link_to "Login", new_user_session_path, class:"btn btn-sm btn-outline-primary" %>
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm btn-outline-primary" %>
+  <% end %>
 </div>
 
 
