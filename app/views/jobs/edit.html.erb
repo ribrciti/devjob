@@ -1,6 +1,7 @@
-<h1>Editing Job</h1>
+<h3 class="flex text-center">  Edit you job  </h3>
+
 
 <%= render 'form', job: @job %>
 
-<%= link_to 'Show', @job %> |
-<%= link_to 'Back', jobs_path %>
+<%= link_to 'Show', @job , class: "btn btn-sm btn-outline-primary mr-3" %>
+<%= link_to 'Back', jobs_path , class: "btn btn-sm btn-outline-dark"%>

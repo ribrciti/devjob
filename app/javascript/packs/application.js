@@ -30,3 +30,16 @@ require("channels")
 require("trix")
 require("@rails/actiontext")
 import "controllers"
+import("trix/dist/trix.css")
+
+
+$(function(){
+   var flashDurationInSeconds = 5;
+   var flashContainerId = 'flash-messages';
+
+   function removeFlashMessages() {
+     $('#' + flashContainerId).remove();
+   }
+
+   setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
+})

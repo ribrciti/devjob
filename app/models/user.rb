@@ -29,8 +29,6 @@
 #
 class User < ApplicationRecord
 
-
-
   include SimpleDiscussion::ForumUser
   has_person_name
 

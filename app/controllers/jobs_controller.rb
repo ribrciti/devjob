@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @jobs = Job.all
+    @jobs = Job.all.published.desc
   end
 
   def show
@@ -18,6 +18,7 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
+    @job.user = current_user
 
     respond_to do |format|
       if @job.save
@@ -52,7 +53,7 @@ class JobsController < ApplicationController
 
   private
     def set_job
-      @job = Job.friendly.find(params[:id])
+      @job = Job.find(params[:id])
     end
 
     def job_params
