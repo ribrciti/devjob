@@ -91,8 +91,8 @@ class Job < ApplicationRecord
 # CONSTANTS
 
   COMPENSATION_TYPES = [
-  "Contract",
-  "Full-time"
+  "Contract position",
+  "Full-time position"
   ]
 
   HOURLY_RANGES = [

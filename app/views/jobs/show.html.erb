@@ -1,18 +1,10 @@
-<div class="card-body ml-4">
- <h3 class="flex text-center">  Edit you job  </h3>
+<div class="card ml-4">
+ <h3 class="flex text-center">  <%= @job.title %>  </h3>
 
-
-<p>
-  <%= @job.title %>
-</p>
+<div class="card-body">
 
 <p>
-  <strong>Link to apply:</strong>
-  <%= @job.link_to_apply %>
-</p>
-
-<p>
-  <strong>Description:</strong>
+  <strong>Job description:</strong>
   <%= @job.description %>
 </p>
 
@@ -32,14 +24,31 @@
 </p>
 
 <p>
-  <strong>Compensation range:</strong>
+  <strong>Link to apply:  </strong>
+  <%= @job.link_to_apply %>
+</p>
+
+
+<p>
+  <strong>Compensation type:</strong>
+  <%= @job.compensation_type %> position
+</p>
+
+<p>
+  <strong>Compensation range $:</strong>
   <%= @job.compensation_range %>
 </p>
 
+<% if @job.remote? %>
 <p>
   <strong>Remote:</strong>
   <%= @job.remote %>
 </p>
+<% else %>
+<p>
+  Not a remote position at this time
+</p>
+<% end %>
 
 <p>
   <strong>Years of experience:</strong>
@@ -54,4 +63,5 @@
 <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-sm btn-outline-primary mr-3" %>
 <%= link_to 'Back', jobs_path , class: "btn btn-sm btn-outline-dark"%>
 
+</div>
 </div>

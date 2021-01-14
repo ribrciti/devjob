@@ -1,46 +1,34 @@
 <div class="container ml-4">
 
-<%= link_to 'New Job', new_job_path , class: "btn btn-sm btn-outline-primary" %>
+<h1>Jobs  <%= link_to 'New Job', new_job_path , class: "ml-4 btn btn-sm btn-outline-primary" %></h1>
 
-<h1>Jobs</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Link to apply</th>
-      <th>Description</th>
-      <th>Company name</th>
-      <th>Company website</th>
-      <th>Company description</th>
-      <th>Compensation range</th>
-      <th>Remote</th>
-      <th>Years of experience</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.title %></td>
-        <td><%= job.link_to_apply %></td>
-        <td><%= job.description %></td>
-        <td><%= job.company_name %></td>
-        <td><%= job.company_website %></td>
-        <td><%= job.company_description %></td>
-        <td><%= job.compensation_range %></td>
-        <td><%= job.remote %></td>
-        <td><%= job.years_of_experience %></td>
-        <td><%= job.user_id %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= link_to job.title, job_path(job_id = job.id)   %>
+
+      <%= job.description %>
+      <strong>Company:</strong> <%= job.company_name %>
+      <strong>Headquarters</strong> <%= job.headquarters %>
+      <br>
+
+      <strong>Salary Range:  </strong> <%= job.compensation_range %>
+      <strong>Location</strong>
+      <% if job.remote?  %>
+        Remote
+      <% else %>
+        <%= job.headquarters %>
+      <% end %>
+      <strong>Desired Experience:  </strong> <%= job.years_of_experience %>
+      <strong>User Id:</strong>   <%= job.user_id %>
+      <br>
+
+      <%= link_to 'Show', job %>
+      <%= link_to 'Edit', edit_job_path(job) %>
+      <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <hr>
     <% end %>
-  </tbody>
-</table>
+
+
 
 <br>
 
