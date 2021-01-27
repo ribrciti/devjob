@@ -52,16 +52,27 @@ class JobsController < ApplicationController
   end
 
   private
+    def new_job
+      if @job.updated_at?
+        new_job = true
+      else
+        new_job = false
+      end
+    end
+
     def set_job
       @job = Job.find(params[:id])
     end
 
     def job_params
       params.require(:job).permit(
+         :company_logo,
          :company_name,
          :company_website,
+         :company_description,
          :compensation_range,
          :compensation_type,
+         :description,
          :estimated_hours,
          :headquarters,
          :link_to_apply,

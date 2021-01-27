@@ -12,13 +12,13 @@
 
   <body>
 
-    <div class="m-4">
-      <%= render "shared/flash_notice" %>
-      <%= render "shared/nav" %>
+    <%= render "shared/flash_notice" %>
+    <%= render "shared/nav" %>
 
+    <%= yield :hero %>
 
-      <%= yield %>
-    </div>
+    <%= yield %>
+
 
   </body>
 </html>

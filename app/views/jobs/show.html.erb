@@ -1,67 +1,64 @@
-<div class="card ml-4">
- <h3 class="flex text-center">  <%= @job.title %>  </h3>
+<div class="container ">
 
-<div class="card-body">
+  <div class="">
+    <%= link_to root_path, class: "mb-4 d-inline-flex items-center justify-start group" do %>
+      <%= render_svg "icons/chevron-left" %>
+      <p class="">Back to all jobs</p>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Job description:</strong>
-  <%= @job.description %>
-</p>
+  <div class="">
+    <div class="">
+      <%= link_to @job.company_name, @job.company_website, class: "grid nav-bar-extras", style: "font-size: 20px" %>
 
-<p>
-  <strong>Company name:</strong>
-  <%= @job.company_name %>
-</p>
+      <h2 class="mb-2 text-3xl "><%= @job.title %></h2>
 
-<p>
-  <strong>Company website:</strong>
-  <%= @job.company_website %>
-</p>
+      <p class="pb-3 mb-3 ">
+        <%= @job.compensation_type %> <span class="px-px text-gray-600">&bull;</span>
+        <% if @job.compensation_type.downcase == "contract" %>
+          <%= @job.estimated_hours %> hours
+        <% else %>
+          <%= number_to_currency(@job.compensation_range) %> <span class="px-px text-gray-600">&bull;</span> <%= pluralize(@job.years_of_experience, 'year') %> of experience
+        <% end %>
+      </p>
 
-<p>
-  <strong>Company description:</strong>
-  <%= @job.company_description %>
-</p>
+      <h3 class="mb-2 ">About the role</h3>
+      <div class="prose">
+        <%= @job.description %>
+      </div>
 
-<p>
-  <strong>Link to apply:  </strong>
-  <%= @job.link_to_apply %>
-</p>
+      <h3 class="mt-10 mb-2 text-xs font-bold tracking-wider text-gray-800 uppercase">About the company</h3>
+      <div class="mb-6 prose">
+        <%= @job.company_description %>
+      </div>
 
+      <%= link_to "Apply for this role", @job.link_to_apply, class: "btn btn-danger font-weight-bold px-2 py-3 mt-2" %>
 
-<p>
-  <strong>Compensation type:</strong>
-  <%= @job.compensation_type %> position
-</p>
-
-<p>
-  <strong>Compensation range $:</strong>
-  <%= @job.compensation_range %>
-</p>
-
-<% if @job.remote? %>
-<p>
-  <strong>Remote:</strong>
-  <%= @job.remote %>
-</p>
-<% else %>
-<p>
-  Not a remote position at this time
-</p>
-<% end %>
-
-<p>
-  <strong>Years of experience:</strong>
-  <%= @job.years_of_experience %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @job.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_job_path(@job), class: "btn btn-sm btn-outline-primary mr-3" %>
-<%= link_to 'Back', jobs_path , class: "btn btn-sm btn-outline-dark"%>
-
+      <% if author_of(@job) || admin? %>
+        <%= link_to 'Edit this job', edit_job_path(@job), class: "btn btn-sm btn-outline-dark ml-2 block mt-6 p-3 mt-1" %>
+      <% end %>
+    </div>
+    <div class="mb-10 text-center lg:col-span-4">
+      <div class="sticky top-0 p-6 mt-6 text-gray-700 bg-white border-2 border-black rounded-lg shadow-sm">
+        <% if @job.company_logo.attached? %>
+          <div class="flex justify-center">
+            <div class="w-16 h-16 my-3 text-center">
+              <%= image_tag @job.company_logo.variant(resize_to_fit: [150, 150]), class: "flex-shrink-0 rounded-full " %>
+            </div>
+          </div>
+        <% end %>
+        <p><%= link_to @job.company_name, @job.company_website, class: "grid nav-bar-extras", style: "font-size: 20px"%></p>
+        <p class="mb-2"><%= @job.title %></p>
+        <p class="pb-3 mb-3">
+          <%= @job.compensation_type %> <span class="">&bull;</span>
+          <% if @job.compensation_type.downcase == "contract" %>
+            <%= @job.estimated_hours %> hours </br>
+        <% else %>
+          <%= number_to_currency(@job.compensation_range) %> </br> <%= pluralize(@job.years_of_experience, 'year') %> of experience desired
+      <% end %>
+    </p>
+    <%= link_to "Apply for this role", @job.link_to_apply, class: "btn btn-outline-danger px-2 py-3" %>
+  </div>
+</div>
 </div>
 </div>

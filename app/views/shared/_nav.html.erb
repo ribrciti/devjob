@@ -1,19 +1,43 @@
-<div class="flex items-right border border-danger rounded mb-4 nav-bar">
+<nav class="navbar navbar-expand-md border border-danger rounded mx-4 mb-4 mt-2 pb-2 nav-bar">
+  <div class="container">
 
-  <%= link_to root_path, class:"change-my-color" do %>
-    <%= render_svg "icons/railsdevs-mark", title: "devjob.com", styles: "" %>
-    <span class="ml-2 mr-4 font-weight-bold fs-2 text-danger">devjob</span>
-  <% end %>
+    <%= link_to root_path, class:"navbar-brand change-my-color  " do %>
+      <%= render_svg "icons/railsdevs-mark", title: "railsdevs.com", styles: "fill-current " %>
+      <span class="ml-2 font-weight-bold  text-danger">devjob</span>
+    <% end %>
 
-  <% if user_signed_in? %>
-    <%= link_to "My account", edit_user_registration_path, class: "btn btn-sm btn-outline-dark mr-4" %>
-    <%=  link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-primary mr-4" %>
-    <span class="nav-bar-extras text-end">
-      Welcome <%= current_user.email %> #<%= current_user.id %>
-    </span>
-  <% else %>
-    <%= link_to "Login", new_user_session_path, class:"btn btn-sm btn-outline-primary" %>
-    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm btn-outline-primary" %>
-  <% end %>
-</div>
+    <button class="navbar-toggler navbar-dark " type="button" data-toggle="collapse" data-target="#navbarMenu" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <% if user_signed_in? %>
+        <li class="nav-item">
+          <% if current_user.employer? %>
+          <%= link_to 'New Job', new_job_path , class: "mx-4 btn btn-sm btn-info" %>
+          <% end %>
+        </li>
+        <div class="d-none d-lg-block">
+            <span class="nav-bar-extras pt-2 text-end ">
+              Welcome: <%= current_user.email   %>
+            </span>
+          </div>
+            <%= link_to "Account", edit_user_registration_path, class: "btn btn-sm btn-outline-dark ml-4 mr-4" %>
+            <%=  link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-primary mr-4" %>
+          <% else %>
+            <span class="nav-bar-extras p-1 text-end mr-4">
+              Welcome: Guest
+            </span>
+            <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class:" btn btn-sm btn-outline-primary" %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm btn-outline-primary" %>
+            </li>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>

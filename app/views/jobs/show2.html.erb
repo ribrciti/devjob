@@ -1,0 +1,72 @@
+<div class="card ml-4">
+ <h3 class="flex text-center">  <%= @job.title %>  </h3>
+
+<div class="card-body">
+
+<p>
+  <strong>Job description:</strong>
+  <%= @job.description %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @job.company_name %>
+</p>
+
+<p>
+  <strong>Company website:</strong>
+  <%= @job.company_website %>
+</p>
+
+<p>
+  <strong>Company description:</strong>
+  <%= @job.company_description %>
+</p>
+
+<p>
+  <strong>Link to apply:  </strong>
+  <%= @job.link_to_apply %>
+</p>
+
+
+<p>
+  <strong>Compensation type:</strong>
+  <%= @job.compensation_type %> position
+</p>
+
+<p>
+  <strong>Compensation range $:</strong>
+  <%= @job.compensation_range %>
+</p>
+
+<p>
+  <strong>Estimated hours</strong>
+  <%= @job.estimated_hours %>
+</p>
+
+<% if @job.remote? %>
+<p>
+  <strong>Remote:</strong>
+  <%= @job.remote %>
+</p>
+<% else %>
+<p>
+  Not a remote position at this time
+</p>
+<% end %>
+
+<p>
+  <strong>Years of experience:</strong>
+  <%= @job.years_of_experience %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @job.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_job_path(@job), class: "btn btn-sm btn-outline-primary mr-3" %>
+<%= link_to 'Back', jobs_path , class: "btn btn-sm btn-outline-dark"%>
+
+</div>
+</div>

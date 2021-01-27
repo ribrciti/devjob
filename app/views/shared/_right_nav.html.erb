@@ -1,0 +1,22 @@
+<div class="collapse navbar-collapse">
+  <ul class="navbar-nav ml-auto">
+    <li class nav-item>
+      <%= link_to 'New Job', new_job_path , class: "mx-4 btn btn-sm btn-success" %>
+    </li>
+
+    <li class nav-item>
+      <% if user_signed_in? %>
+        <span class="nav-bar-extras text-end">
+          Welcome <%= current_user.email  %>
+        </span>
+        <%= link_to "Account", edit_user_registration_path, class: "btn btn-sm btn-outline-dark ml-4 mr-4" %>
+        <%=  link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-primary mr-4" %>
+
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class:"btn btn-sm btn-outline-primary" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </li>
+  </ul>
+</div>
+

@@ -1,36 +1,18 @@
-<div class="container ml-4">
+<div class="container">
+<%= content_for :hero do %>
 
-<h1>Jobs  <%= link_to 'New Job', new_job_path , class: "ml-4 btn btn-sm btn-outline-primary" %></h1>
-
-
-    <% @jobs.each do |job| %>
-      <%= link_to job.title, job_path(job_id = job.id)   %>
-
-      <%= job.description %>
-      <strong>Company:</strong> <%= job.company_name %>
-      <strong>Headquarters</strong> <%= job.headquarters %>
-      <br>
-
-      <strong>Salary Range:  </strong> <%= job.compensation_range %>
-      <strong>Location</strong>
-      <% if job.remote?  %>
-        Remote
-      <% else %>
-        <%= job.headquarters %>
-      <% end %>
-      <strong>Desired Experience:  </strong> <%= job.years_of_experience %>
-      <strong>User Id:</strong>   <%= job.user_id %>
-      <br>
-
-      <%= link_to 'Show', job %>
-      <%= link_to 'Edit', edit_job_path(job) %>
-      <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <hr>
-    <% end %>
+    <div class=" flex flex-wrap text-center text-white bg-danger ml-4 ">
+      <h1 class="font-weight-bold pt-3 p-2">Find a Ruby on Rails developer</h1>
+      <p class="font-weight-bold">The internet's resource for Ruby on Rails developers</p>
+      <%= link_to "Find a developer", "#" ,  class: "btn btn-sm btn-outline-light border rounded mr-3  mb-4" %>
+      <%= link_to "Find a job", "#" ,  class: "btn btn-sm btn-secondary px-4 border border-dark rounded mb-4" %>
+      <%= link_to "Community portal", "#" ,  class: "btn btn-sm btn-light border border-dark rounded ml-3 mb-4" %>
+    </div>
+  </div>
+<% end %>
 
 
-
-<br>
+  <%= render @jobs %>
 
 
 </div>
