@@ -1,4 +1,4 @@
-<div class="container relative text-dark mt-4 ml-4">
+<div class="container relative text-dark mt-4 ml-4 ">
   <div class="card">
     <div class="justify-content-start">
       <% if job.company_logo.attached? %>
@@ -22,7 +22,7 @@
 
     <p><%= link_to job.title, job_path(job_id = job.id), class: "job-title"   %></p>
 
-    <p class="mb-0 ">
+    <p class="mb-0 font-weight-bold">
       <%= job.compensation_type %> <span class="p-2">&bull;</span>
       <% if job.compensation_type.downcase == "contract" %>
         <%= job.estimated_hours %> hours

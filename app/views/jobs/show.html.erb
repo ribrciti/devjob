@@ -1,24 +1,29 @@
-<div class="container ">
+<div class="container">
 
   <div class="">
-    <%= link_to root_path, class: "mb-4 d-inline-flex items-center justify-start group" do %>
+    <%= link_to root_path, class: "mb-3 d-inline-flex items-center justify-start group" do %>
       <%= render_svg "icons/chevron-left" %>
-      <p class="">Back to all jobs</p>
+      <span class="show-view ">Back to all jobs</span>
     <% end %>
   </div>
 
   <div class="">
     <div class="">
-      <%= link_to @job.company_name, @job.company_website, class: "grid nav-bar-extras", style: "font-size: 20px" %>
+      <%= link_to @job.company_name, @job.company_website, class: "grid nav-bar-extras ", style: "font-size: 20px" %>
 
       <h2 class="mb-2 text-3xl "><%= @job.title %></h2>
 
-      <p class="pb-3 mb-3 ">
+      <p class="pb-3 mb-3 font-weight-bold ">
         <%= @job.compensation_type %> <span class="px-px text-gray-600">&bull;</span>
         <% if @job.compensation_type.downcase == "contract" %>
           <%= @job.estimated_hours %> hours
         <% else %>
           <%= number_to_currency(@job.compensation_range) %> <span class="px-px text-gray-600">&bull;</span> <%= pluralize(@job.years_of_experience, 'year') %> of experience
+        <% end %>
+        <% if @job.remote? %>
+          &bull;<span class="ml-1">Work from home</span>
+        <% else %>
+          &bull;<span class="ml-1">Office Location: </span><%= @job.headquarters %>
         <% end %>
       </p>
 
