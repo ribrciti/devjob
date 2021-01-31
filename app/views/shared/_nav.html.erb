@@ -21,7 +21,7 @@
         </li>
         <div class="d-none d-lg-block">
             <span class="nav-bar-extras pt-2 text-end ">
-              Welcome: <%= current_user.email   %>
+              Welcome: <%= current_user.first_name unless nil?   %>
             </span>
           </div>
             <%= link_to "Account", edit_user_registration_path, class: "btn btn-sm btn-outline-dark ml-4 mr-4" %>
